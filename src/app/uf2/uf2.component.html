@@ -1,0 +1,45 @@
+<p>uf2 works!</p>
+<h1>Lista de Profesores</h1>
+<ul>
+  <li *ngFor="let professor of professors">
+    {{ professor.prof_dni }} - {{ professor.prof_nom }} - {{ professor.prof_cognom_1 }} - {{ professor.prof_cognom_2 }} - {{ professor.prof_telefon }}
+  </li>
+</ul>
+
+<p>uf2 works!</p>
+<button (click)="addAlumnVirgenField()">Agregar campo ALUMN_VIRGEN</button>
+
+<h1>Alumno con nota 10</h1>
+<div *ngIf="alumnoConNota10">
+  <h3>Alumno con nota 10:</h3>
+  <p>DNI: {{ alumnoConNota10.ALUMN_DNI }}</p>
+  <p>Nombre: {{ alumnoConNota10.ALUMN_NOM }}</p>
+  <p>Apellidos: {{ alumnoConNota10.ALUMN_COGNOM_1 }} {{ alumnoConNota10.ALUMN_COGNOM_2 }}</p>
+  <p>DNI: {{ alumnoConNota10.ALUMN_ADRECA }}</p>
+  <p>DNI: {{ alumnoConNota10.ALUMN_CODI_POSTAL }}</p>
+  <p>DNI: {{ alumnoConNota10.ALUMN_POBLACIO }}</p>
+  <p>DNI: {{ alumnoConNota10.ALUMN_COMARCA }}</p>
+  <p>DNI: {{ alumnoConNota10.ALUMN_TELEFON }}</p>
+  <p>DNI: {{ alumnoConNota10.ALUMN_DATA_NAIXEMENT }}</p>
+  <p>DNI: {{ alumnoConNota10.ALUMN_CASAT }}</p>
+  <p>DNI: {{ alumnoConNota10.ALUMN_E_MAIL }}</p>
+
+</div>
+
+<h1>Eliminar Campo PROF_CASAT</h1>
+<button id="borrarCampoButton">Eliminar Campo PROF_CASAT</button>
+
+<script>
+  document.getElementById('borrarCampoButton').addEventListener('click', async () => {
+    try {
+      const response = await fetch('/api/borrarcamp', {
+        method: 'DELETE'
+      });
+
+      const data = await response.json();
+      console.log(data.mensaje);
+    } catch (error) {
+      console.error(error);
+    }
+  });
+</script>
